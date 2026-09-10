@@ -1,0 +1,16 @@
+Research begins with a clear question.
+Good research requires careful planning.
+Data can help answer a research question.
+Clean data supports reliable analysis.
+Python provides tools for text analysis.
+Text analysis starts with reading a file.
+Each text file contains words and punctuation.
+Words can appear in different letter cases.
+Convert words to lowercase before counting.
+Count each word in the text.
+Sort each word by its count.
+Save the word count results in a file.
+Tests check that the results are correct.
+Good tests include empty text and repeated words.
+Research tools should produce clear results.
+Reliable tools make research easier to repeat.
