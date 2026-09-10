@@ -86,18 +86,19 @@ Git 是分布式版本控制系统。工作区保存正在编辑的文件，暂�
     \begin{tikzpicture}[
         node distance=8mm,
         box/.style={draw=myteal, fill=myteal!6, rounded corners=2pt,
-                    minimum width=25mm, minimum height=11mm, align=center, font=\small},
+                    minimum width=27mm, minimum height=12mm, align=center,
+                    text height=1.6ex, text depth=0.9ex, font=\small},
         arr/.style={-{Stealth[length=2.5mm]}, thick, draw=myteal!80!black, font=\scriptsize}
     ]
         \node[box] (work) {工作区};
         \node[box, right=16mm of work] (stage) {暂存区};
         \node[box, right=16mm of stage] (local) {本地仓库};
-        \node[box, right=16mm of local] (remote) {GitHub\\远程仓库};
+        \node[box, right=16mm of local] (remote) {GitHub 远程仓库};
 
         \draw[arr] (work) -- node[above]{git add} (stage);
         \draw[arr] (stage) -- node[above]{git commit} (local);
         \draw[arr] (local) -- node[above]{git push} (remote);
-        \draw[arr] (remote.south) .. controls +(0,-9mm) and +(0,-9mm) ..
+        \draw[arr] (remote.south) to[out=-90, in=-90, looseness=0.6]
               node[below]{git pull} (work.south);
     \end{tikzpicture}
     \caption{Git 工作区、暂存区、本地仓库与远程仓库之间的数据流向}
@@ -205,7 +206,7 @@ $ cd research-tools-week1
 
 远程仓库创建后的主页如图 \ref{fig:ghrepo} 所示，四个目录与 README 均已同步。
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=0.92\textwidth]{figures/github_repo.png}
     \caption{GitHub 仓库主页，显示目录结构与 README}
