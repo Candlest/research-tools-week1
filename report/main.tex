@@ -34,13 +34,13 @@
 }
 \lstset{style=mystyle}
 
-\headl{学号 姓名}
+\headl{24311019 胡嘉睿}
 \headc{}
 \headr{数据安全和隐私保护}
 \lessonTitle{数据安全和隐私保护}
 \reportTitle{数据安全和隐私保护第一次实验}
-\stuname{姓名}
-\stuid{学号}
+\stuname{胡嘉睿}
+\stuid{24311019}
 \inst{网络空间安全学院}
 \major{网络空间安全}
 \date{2026 年 9 月 10 日}
@@ -203,6 +203,15 @@ Cloning into 'research-tools-week1'...
 $ cd research-tools-week1
 \end{lstlisting}
 
+远程仓库创建后的主页如图 \ref{fig:ghrepo} 所示，四个目录与 README 均已同步。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.92\textwidth]{figures/github_repo.png}
+    \caption{GitHub 仓库主页，显示目录结构与 README}
+    \label{fig:ghrepo}
+\end{figure}
+
 \subsubsection{第一次提交}
 
 提交前依次执行 \verb|status| 和 \verb|diff|，确认变化范围与内容，再明确列出待暂存文件，未使用 \verb|git add .|。
@@ -315,6 +324,15 @@ $ git log --oneline --graph --decorate -n 10
 \end{lstlisting}
 
 历史记录中包含两次本地提交和一次远程更新，与实验要求一致。
+
+GitHub 端的提交列表如图 \ref{fig:ghcommits} 所示，与本地 \verb|git log| 的结果一致。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.92\textwidth]{figures/github_commits.png}
+    \caption{GitHub 仓库的提交列表}
+    \label{fig:ghcommits}
+\end{figure}
 
 \subsection{Codex 辅助编程}
 
@@ -434,9 +452,36 @@ CC Switch 3.14.1 已通过 Homebrew Cask 安装，供应商条目保存在 \path
 }
 \end{lstlisting}
 
+CC Switch 的 Codex 页面如图 \ref{fig:ccmain} 所示，条目按卡片排列，当前启用的条目以高亮边框标识，右侧提供启用、编辑、复制、测速和删除操作。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.92\textwidth]{figures/ccswitch_main.png}
+    \caption{CC Switch 主界面，Codex 页面的供应商列表}
+    \label{fig:ccmain}
+\end{figure}
+
+供应商的编辑表单如图 \ref{fig:ccadd} 所示，包含供应商名称、官网链接、API Key、API 请求地址和默认模型五项。API Key 默认以掩码显示，API 请求地址需填写兼容 OpenAI Response 格式的端点，通常以 \verb|/v1| 结尾。图中 API 请求地址一栏已遮盖。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.92\textwidth]{figures/ccswitch_add.png}
+    \caption{CC Switch 的供应商编辑表单（API 请求地址已遮盖）}
+    \label{fig:ccadd}
+\end{figure}
+
 配置与切换的操作步骤为：在 CC Switch 的 Codex 页面点击添加供应商；选择内置预设，或选择自定义后按供应商文档填写名称、API Key、Endpoint URL 和模型，Codex 端点通常以 \verb|/v1| 结尾；保存后点击供应商卡片上的启用；关闭并重新打开 Codex 或终端，使新的供应商和模型列表生效；在会话中用 \verb|/status| 核对当前模型与权限。
 
 切换的生效机制为：CC Switch 将所选条目的 \verb|config| 字段写入 \path{~/.codex/config.toml}，将 \verb|auth| 字段写入 \path{~/.codex/auth.json}。命令行工具在启动时读取配置文件，因此切换后需要重启 Codex CLI 或 Codex App。前述两次 \verb|codex exec| 调用即在当前启用的供应商下完成，返回结果正常，可作为供应商配置生效的验证。
+
+切换后在 Codex 会话中执行 \verb|/status|，结果如图 \ref{fig:status} 所示。输出中的 Model 与 Model provider 两项与 CC Switch 中启用的条目一致，Permissions 显示当前会话的权限级别。图中 Model provider 的端点地址与 Session 编号已遮盖。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.92\textwidth]{figures/codex_status.png}
+    \caption{Codex 会话中 \texttt{/status} 的输出（端点与会话编号已遮盖）}
+    \label{fig:status}
+\end{figure}
 
 \section{实验总结}
 
